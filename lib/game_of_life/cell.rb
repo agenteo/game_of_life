@@ -16,14 +16,12 @@ module GameOfLife
       @state == DEAD
     end
 
-    def mutate!(neighbor_cells)
-      total_alive_neighbors = neighbor_cells.flatten.count {|cell| cell.alive? }
-
-      if alive? && total_alive_neighbors == 0
+    def mutate!(cell_perimeter)
+      if alive? && cell_perimeter.alive_cells == 0
         @state = DEAD
       end
 
-      if dead? && total_alive_neighbors == 2
+      if dead? && cell_perimeter.alive_cells == 2
         @state = ALIVE
       end
     end

@@ -17,17 +17,10 @@ module GameOfLife
 
       describe "when mutating" do
         context "with no alive neighbor cells" do
-          before do
-            @neighbor_cells = [
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)]
-            ]
-          end
+          let(:perimeter) { double('CellPerimeter', :alive_cells => 0) }
 
           it "should die" do
-            cell.mutate!(@neighbor_cells)
+            cell.mutate!(perimeter)
             cell.should be_dead
           end
         end
@@ -48,50 +41,38 @@ module GameOfLife
 
       describe "when mutating" do
         context "with no alive neighbor cells" do
-          before do
-            @neighbor_cells = [
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)]
-            ]
-          end
+          let(:perimeter) { double('CellPerimeter', :alive_cells => 0) }
 
           it "should stay dead" do
-            cell.mutate!(@neighbor_cells)
+            cell.mutate!(perimeter)
             cell.should be_dead
           end
         end
 
         context "with one alive neighbor cells" do
-          before do
-            @neighbor_cells = [
-              [double('Cell', :alive? => true), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)]
-            ]
-          end
+          let(:perimeter) { double('CellPerimeter', :alive_cells => 1) }
 
           it "should stay dead" do
-            cell.mutate!(@neighbor_cells)
+            cell.mutate!(perimeter)
             cell.should be_dead
           end
         end
 
         context "with two alive neighbor cells" do
-          before do
-            @neighbor_cells = [
-              [double('Cell', :alive? => true), double('Cell', :alive? => true), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)],
-              [double('Cell', :alive? => false), double('Cell', :alive? => false), double('Cell', :alive? => false)]
-            ]
-          end
+          let(:perimeter) { double('CellPerimeter', :alive_cells => 2) }
 
           it "should resuscitate back to alive" do
-            cell.mutate!(@neighbor_cells)
+            cell.mutate!(perimeter)
             cell.should be_alive
+          end
+        end
+
+        context "with three alive neighbor cells" do
+          let(:perimeter) { double('CellPerimeter', :alive_cells => 3) }
+
+          it "should stay dead" do
+            cell.mutate!(perimeter)
+            cell.should be_dead
           end
         end
       end
