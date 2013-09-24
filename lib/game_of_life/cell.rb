@@ -21,7 +21,7 @@ module GameOfLife
         @state = DEAD
       end
 
-      if dead? && cell_perimeter.alive_cells == 2
+      if dead? && [2,3].include?(cell_perimeter.alive_cells)
         @state = ALIVE
       end
     end
