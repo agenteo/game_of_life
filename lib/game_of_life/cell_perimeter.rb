@@ -7,7 +7,7 @@ module GameOfLife
     end
     
     def alive_cells
-      @cells.count {|cell| cell.alive? }
+      @cells.inject(0) {|total, cell| total += cell.state }
     end
   end
   

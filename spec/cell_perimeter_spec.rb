@@ -5,14 +5,14 @@ module GameOfLife
   describe CellPerimeter do
     context "with no alive cells" do
       let(:cells) {
-        [double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false)]
+        [double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0)]
       }
       
       it "should have zero alive cells" do
@@ -23,14 +23,14 @@ module GameOfLife
 
     context "with one alive cell" do
       let(:cells) {
-        [double('Cell', :alive? => false),
-         double('Cell', :alive? => true),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false),
-         double('Cell', :alive? => false)]
+        [double('Cell', :state => 0),
+         double('Cell', :state => 1),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0),
+         double('Cell', :state => 0)]
       }
       
       it "should have zero alive cells" do

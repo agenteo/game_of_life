@@ -1,29 +1,6 @@
 # GameOfLife
 
-TODO: Write a gem description
+This is a partial implementation of [Conway's game of life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life).
+The code retreat constraint for the 40 minutes session was no conditional statements. This is the solution another team suggested that I wanted to write myself after the retreat.
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'game_of_life'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install game_of_life
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+The hash dictionary is used as a mean to deliver conditional statement.
